@@ -1,0 +1,22 @@
+<div *ngIf="izdelek">
+
+    <h3 class="normal">Ime: <b>{{izdelek.ime}}</b></h3>
+
+    <p>Opis: <b>{{izdelek.opis}}</b></p>
+    <p>Cena: <b>{{izdelek.cena}}€</b></p>
+
+    <p>Kategorija:</p>
+    <ul class="artikli">
+        <li>id: <b>{{izdelek.kategorija.id}}</b> </li>
+        <li>ime: <b>{{izdelek.kategorija.ime}}</b> </li>
+    </ul>
+
+    <p>Trgovina</p>
+    <ul class="artikli">
+        <li>id: <b>{{izdelek.trgovina.id}}</b> </li>
+        <li>ime: <b>{{izdelek.trgovina.ime}}</b> </li>
+    </ul>
+
+    <br>
+    <button (click)="nazaj()">Nazaj</button>
+</div>

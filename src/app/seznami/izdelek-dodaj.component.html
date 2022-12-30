@@ -1,0 +1,70 @@
+<h2>Dodaj izdelek</h2>
+<div *ngIf="izdelek">
+    <form (ngSubmit)="submitForm()" ngNativeValidate>
+        <table>
+            <tr>
+                <td><label for="ime">Ime</label></td>
+                <td><input [(ngModel)]="izdelek.ime" id="ime" name="ime" required /></td>
+            </tr>
+            <tr>
+                <td><label for="opis">Opis</label></td>
+                <td><input [(ngModel)]="izdelek.opis" id="opis" name="opis" /></td>
+            </tr>
+            <tr>
+                <td><label for="cena">Cena</label></td>
+                <td><input [(ngModel)]="izdelek.cena" id="cena" name="cena" /></td>
+            </tr>
+
+            <div>
+                <label style="padding-right: 15px;">Kategorija:</label>
+                <select (change)="onChangeKategorija($event)">
+                    <option *ngFor="let k of kategorije" [value]="k.id">
+                        <p>{{k.id}} - {{k.ime}}</p>
+                    </option>
+                    <option *ngIf="kategorija" [value]="kategorija_value">
+                        Dodaj novo kategorijo
+                    </option>
+                </select>
+    
+                <div *ngIf="kategorija && nova_kategorija">
+                    <!-- <tr>
+                        <td><label for="kategorija.id">Id nove kategorije</label></td>
+                        <td><input [(ngModel)]="kategorija.id" id="kategorija.id" name="kategorija.id" /></td>
+                    </tr> -->
+                    <tr>
+                        <td><label for="kategorija.ime">Ime nove kategorije</label></td>
+                        <td><input [(ngModel)]="kategorija.ime" id="kategorija.ime" name="kategorija.ime" /></td>
+                    </tr>
+                </div>
+            </div>
+
+            <div>
+                <label style="padding-right: 15px;">Trgovina:</label>
+                <select (change)="onChangeTrgovina($event)">
+                    <option *ngFor="let t of trgovine" [value]="t.id">
+                        <p>{{t.id}} - {{t.ime}}</p>
+                    </option>
+                    <option *ngIf="kategorija" [value]="trgovina_value">
+                        Dodaj novo kategorijo
+                    </option>
+                </select>
+                
+                <div *ngIf="trgovina && nova_trgovina">
+                    <!-- <tr>
+                        <td><label for="trgovina.id">Id nove trgovine</label></td>
+                        <td><input [(ngModel)]="trgovina.id" id="trgovina.id" name="trgovina.id" /></td>
+                    </tr> -->
+                    <tr>
+                        <td><label for="trgovina.ime">Ime nove trgovine</label></td>
+                        <td><input [(ngModel)]="trgovina.ime" id="trgovina.ime" name="trgovina.ime" /></td>
+                    </tr>
+                </div>
+            </div>
+            
+        </table>
+
+        <br/>
+        <button type="button" (click)="nazaj()">Nazaj</button>
+        <button type="submit">Dodaj</button>
+    </form>
+</div>

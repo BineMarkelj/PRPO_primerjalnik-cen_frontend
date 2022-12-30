@@ -1,0 +1,13 @@
+<h2>Izdelki</h2>
+
+<ul class="izdelki">
+    <li *ngFor="let izdelek of izdelki" (click)="naPodrobnosti(izdelek)">
+        <span>{{izdelek.ime}}</span>
+        <button class="delete"
+                (click)="delete(izdelek); $event.stopPropagation()">x
+        </button>
+    </li>
+</ul>
+
+<button (click)="dodajIzdelek()">Dodaj izdelek</button>
+
